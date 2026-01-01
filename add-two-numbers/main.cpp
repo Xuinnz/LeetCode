@@ -2,16 +2,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-// Definition for singly-linked list.
 struct ListNode {
     int val;
     struct ListNode *next;
 };
 
-// Your function declaration
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 
-// Helper function to create a new node
 struct ListNode* createNode(int val) {
     struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
     newNode->val = val;
@@ -19,7 +16,6 @@ struct ListNode* createNode(int val) {
     return newNode;
 }
 
-// Helper function to print the list
 void printList(struct ListNode* node) {
     while (node != NULL) {
         printf("%d", node->val);
