@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <limits.h> 
+#include <limits.h> // Essential for INT_MAX and INT_MIN
 #include <math.h>
 
-//FAILEDDD
+// 
 //1021 / 1045 testcases passed
 int reverse(int x);
 
@@ -30,6 +30,7 @@ int main() {
     return 0;
 }
 
+// --- Leave the logic for you to implement ---
 int reverse(int x) {
     int rev = 0;
 
@@ -37,27 +38,14 @@ int reverse(int x) {
     int i = x;
     while(i != 0){
         digits++;
-        if(digits == 10){
-        if(x > 0 && x % (int)pow(10, 10) > 7) return 0;
-        if(x < 0 && x % (int)pow(10,10) > 8) return 0;
-        if(x % (int)pow(10, 9) <= 4)
-        if(x % (int)pow(10, 8) <= 6)
-        if(x % (int)pow(10, 7) <= 3)
-        if(x % (int)pow(10, 6) <= 8)
-        if(x % (int)pow(10, 5) <= 4)
-        if(x % (int)pow(10, 4) <= 7)
-        if(x % (int)pow(10, 3) <= 4)
-        if(x % (int)pow(10, 2) <= 1)
-        if(x % (int)pow(10, 1) <= 2)
-        continue;
-        return 0;
-        }
         i /= 10;
     }
     int j = 1;
     rev = 0;
 
     while (digits != 0){
+        if(rev > INT_MAX / 10 || (rev == INT_MAX && (x % 10) > 7)) return 0;
+        if(rev < INT_MIN / 10 || (rev == INT_MIN && (x % 10) < -8)) return 0;
         rev = (rev * 10) + (x % 10);
         x /= 10;
         digits--;
