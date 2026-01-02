@@ -2,6 +2,10 @@
 #include <stdbool.h>
 #include <limits.h>
 
+//FAILEDDDDDD
+//400/2000 test cases passed 
+//needs refactor
+
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size);
 
 int main() {
@@ -15,6 +19,7 @@ int main() {
     printf("Input: [1, 3, 4, 10, 12], [2, 5, 7]\n");
     printf("Result: %f\n\n", findMedianSortedArrays(a1, size1, a2, size2));
 
+    //FAILEDDDD
     int b1[] = {0,0,0,0,0};
     int b2[] = {-1,0,0,0,0,0,1};
     int bSize1 = sizeof(b1) / sizeof(b1[0]);
