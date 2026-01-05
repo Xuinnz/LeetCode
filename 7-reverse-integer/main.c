@@ -2,8 +2,7 @@
 #include <limits.h> // Essential for INT_MAX and INT_MIN
 #include <math.h>
 
-// 
-//1021 / 1045 testcases passed
+// PASSED
 int reverse(int x);
 
 int main() {
@@ -30,7 +29,6 @@ int main() {
     return 0;
 }
 
-// --- Leave the logic for you to implement ---
 int reverse(int x) {
     int rev = 0;
 
