@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include <stdbool.h> // Required for the bool type
+#include <stdbool.h> 
 #include<string.h>
 
-// Function prototype
+//failed
+//deterministic approach
 bool isMatch(char* s, char* p);
 
 int main() {
@@ -41,7 +42,7 @@ bool isMatch(char* s, char* p){
     int currentP = 0;
     int numS = strlen(s);
     int numP = strlen(p);
-    while(currentS < numS && currentP < numP){
+    while(currentS < numS){
         if(p[currentP] == '.'){
             if(p[currentP + 1] == '*'){
                 if(p[currentP + 2] >= 'a' && p[currentP + 2] <= 'z'){
