@@ -45,7 +45,7 @@ bool isMatch(char* s, char* p){
     while(currentS < numS){
         if(p[currentP] == '.'){
             if(p[currentP + 1] == '*'){
-                if(p[currentP + 2] >= 'a' && p[currentP + 2] <= 'z'){
+                if((currentP + 2 < numP) && p[currentP + 2] >= 'a' && p[currentP + 2] <= 'z'){
                     char c = p[currentP + 2];
                     while(c != s[currentS]){
                         currentS++;
@@ -74,7 +74,6 @@ bool isMatch(char* s, char* p){
         }
     }
     return true;
-
 }
 
 //a - required
