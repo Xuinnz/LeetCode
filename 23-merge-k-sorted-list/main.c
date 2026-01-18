@@ -7,10 +7,10 @@ struct ListNode {
     struct ListNode *next;
 };
 
-struct minHeap {
+struct treeNode {
     int val;
-    struct minHeap *left;
-    struct minHeap *right;
+    struct treeNode *left;
+    struct treeNode *right;
 }
 
 // Function prototype for your solution
@@ -77,4 +77,21 @@ int main() {
     free(lists);
 
     return 0;
+}
+
+struct ListNode* mergeKLists(struct ListNode** lists, int listsSize){
+    struct treeNode minHeap;
+    struct treeNode *current = &minHeap;
+    struct treeNode *head = &minHeap;
+    for(int i = 0; i < listsSize; i++){
+        if(!current){
+            current -> value = lists[i] -> value;
+        }
+        else if(!current ->left){
+            current -> left =   
+        }
+        else if(!current ->right){
+            current = current -> right;
+        }
+    }
 }
