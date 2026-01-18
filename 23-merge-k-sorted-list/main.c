@@ -6,12 +6,7 @@ struct ListNode {
     int val;
     struct ListNode *next;
 };
-
-struct treeNode {
-    int val;
-    struct treeNode *left;
-    struct treeNode *right;
-}
+struct ListNode* merge(struct ListNode* list1, struct ListNode* list2);
 
 // Function prototype for your solution
 struct ListNode* mergeKLists(struct ListNode** lists, int listsSize);
@@ -78,20 +73,34 @@ int main() {
 
     return 0;
 }
-
 struct ListNode* mergeKLists(struct ListNode** lists, int listsSize){
-    struct treeNode minHeap;
-    struct treeNode *current = &minHeap;
-    struct treeNode *head = &minHeap;
-    for(int i = 0; i < listsSize; i++){
-        if(!current){
-            current -> value = lists[i] -> value;
+    if(listsSize == 0) return NULL;
+    int interval = 1;
+    while(interval < listsSize){
+        for(int i = 0; i + interval < listsSize; i = i + interval * 2){
+            lists[i] = merge(lists[i], lists[i + interval]);
         }
-        else if(!current ->left){
-            current -> left =   
-        }
-        else if(!current ->right){
-            current = current -> right;
-        }
+        interval *= 2;
     }
+    return lists[0];
+} 
+
+struct ListNode* merge(struct ListNode* list1, struct ListNode* list2){
+    struct ListNode dummy;
+    struct ListNode* tail = &dummy;
+    dummy.next = NULL;
+    while(list1 && list2){
+        if(list1 -> val <= list2 -> val){
+            tail -> next = list1;
+            list1 = list1 -> next;
+        }
+        else{
+            tail -> next = list2;
+            list2 = list2 -> next;
+        }
+        tail = tail -> next;
+    }
+    if(list1) tail -> next = list1;
+    else tail -> next = list2;
+    return dummy.next;
 }
