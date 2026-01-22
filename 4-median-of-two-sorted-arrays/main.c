@@ -41,7 +41,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
         if (nums1Size % 2 != 0) return nums1[nums1Size / 2];
         return (nums1[nums1Size / 2 - 1] + nums1[nums1Size / 2]) / 2.0;
     }
-
+    
     int median1 = 0, median2 = 0;
     double finalmedian;
     bool odd = ((nums1Size + nums2Size) % 2 != 0);
