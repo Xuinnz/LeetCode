@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Function prototype
 int divide(int dividend, int divisor);
@@ -36,12 +37,21 @@ int main() {
 }
 
 int divide(int dividend, int divisor) {
-    int i = 0;
-    if(INT_MAX < dividend) return INT_MAX;
-    if(INT_MIN < dividend) return INT_MIN;
-    while(abs(dividend) > abs(divisor)){
-        i++;
-        dividend -= abs(divisor);
+    if (dividend == INT_MIN && divisor == -1) return INT_MAX;
+    int result = 0;
+    bool isNegative = (dividend < 0) ^ (divisor < 0);
+    if(dividend > 0) dividend = -dividend;
+    if(divisor > 0) divisor = -divisor;
+
+    while (dividend <= divisor){
+        int remainder = divisor;
+        int i = -1;
+        while(remainder >= -1073741824 && dividend <= (remainder << 1)){
+            remainder <<= 1;
+            i <<= 1;
+        }
+        dividend -= remainder;
+        result += i;
     }
-    return i;
+    return isNegative ? -result : result;
 }
