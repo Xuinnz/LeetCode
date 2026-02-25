@@ -81,13 +81,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
             adv_end = adv_end -> next;
             match++;
         }
-        if(headP == 0 && match > 1){
-            if(adv_start -> next) temp = adv_start -> next;
-            if(temp -> val != adv_start -> val){
-            head = adv_start ;
-            headP++;
-            }
-        }
+        if(match > 1 && adv_end == NULL && headP == 0) return NULL;
         if(match > 1){
             currHead -> next = adv_end;
         } else{ 
@@ -96,7 +90,13 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
         if(!currHead -> next) break;
         adv_start = currHead -> next;
         adv_end = adv_start;
-        
+        if(headP == 0 && match > 1){
+            if(adv_start -> next) temp = adv_start -> next;
+            if(temp -> val != adv_start -> val){
+            head = adv_start ;
+            headP++;
+            }
+        }
     }
     return head;
     // 1 1 2 2 3
