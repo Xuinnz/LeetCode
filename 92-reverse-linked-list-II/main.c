@@ -67,6 +67,7 @@ int main() {
 struct ListNode* reverseBetween(struct ListNode* head, int left, int right){
     if(!head) return NULL;
     if(!head -> next) return head;
+    if(left == right) return head;
     struct ListNode* prev = NULL;
     struct ListNode* curr = head;
     struct ListNode* adv = NULL;
